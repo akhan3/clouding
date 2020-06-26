@@ -1,28 +1,29 @@
 #!/bin/bash
 
 USR="aamir"
-logfile=/root/launch.log
-
-cd /root || exit
+logfile=/first_launch.log
+pushd /root || exit
 
 (
 echo "[$(date --iso=s)] First launch detected"
 
+# Check if a user already exists at ID=1000
 OLD="$(id -n -u 1000 2> /dev/null)"
 if [[ -n "$OLD" ]] ; then
-    echo "Found user \"$OLD\" with ID=1000"
-    userdel -r "$OLD"
-    groupdel "$OLD"
+    echo "Replacing user \"$OLD\" with \"$USR\""
+    usermod "$OLD" --login "$USR" --move-home --home /home/"$USR"
+    groupmod "$OLD" --new-name "$USR"
+else
+    echo "[$(date --iso=s)] Adding new user $USR..."
+    adduser "$USR" --disabled-password --gecos "" --uid 1000
 fi
-
-echo "[$(date --iso=s)] Add new user $USR..."
-adduser "$USR" --disabled-password --gecos "" --uid 1000
-    # Following is how to generate the password hash
-    # openssl passwd -6 | sed -e 's/\$/\\\$/g'
-    # Paste the salted & hashed password inside the double quotes after escaping dollar sign
-usermod "$USR" -p "\$6\$mad2s9aBKOTmVOeN\$mhoRdRxcr5cFH7V5.BStkXkoOi5oEBSMahPoQxxm4.1z8TARnqlZbTJ9BwNTyY8OCSXoW8hRAw5qZznQVBapE0"
 adduser "$USR" sudo
+# Following is how to generate the password hash
+# openssl passwd -6 | sed -e 's/\$/\\\$/g'
+# Paste the salted & hashed password inside the double quotes after escaping dollar sign
+usermod "$USR" -p "\$6\$mad2s9aBKOTmVOeN\$mhoRdRxcr5cFH7V5.BStkXkoOi5oEBSMahPoQxxm4.1z8TARnqlZbTJ9BwNTyY8OCSXoW8hRAw5qZznQVBapE0"
 
+# Add SSH keys
 authfile=/home/"$USR"/.ssh/authorized_keys
 if [[ ! -f "$authfile" ]]; then
     directory="$(dirname "$authfile")"
@@ -45,8 +46,8 @@ echo "[$(date --iso=s)] Updating OS finished!"
 
 ) | tee "$logfile"
 
-install -o "$USR" -g "$USR" "$logfile" /home/"$USR"
-
+install -o "$USR" -g "$USR" "$logfile" "/home/\"$USR\""
+popd || exit
 
 # =====================================================================
 
