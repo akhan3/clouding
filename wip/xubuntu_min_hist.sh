@@ -1,5 +1,7 @@
-# Curated
+#!/bin/bash
 
+# <!--
+# Curated
 sudo apt install tasksel
 sudo tasksel -t
 ls -lF /usr/lib/tasksel/info/ubuntu-mate-desktop.preinst
@@ -8,6 +10,11 @@ less /usr/lib/tasksel/info/desktop.preinst
 sudo /usr/lib/tasksel/info/desktop.preinst
 sudo apt install xserver-xorg
 sudo tasksel -t
+debconf-apt-progress -- apt-get -q -y -o APT::Install-Recommends=true -o APT::Get::AutomaticRemove=true -o APT::Acquire::Retries=3 install xubuntu-core^
+
+sudo apt install xrdp
+systemctl status xrdp
+# -->
 
 
 # Lubuntu Desktop
