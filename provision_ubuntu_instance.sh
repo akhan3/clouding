@@ -1,7 +1,7 @@
 #!/bin/bash
 
 USR="aamir"
-logfile=/first_launch.log
+logfile="/first_launch_$(date +%s).log"
 pushd /root || exit
 
 (
@@ -10,12 +10,12 @@ echo "[$(date --iso=s)] First launch detected"
 # Check the user at UID=1000
 OLD="$(id -n -u 1000 2> /dev/null)"
 if [[ "$OLD" == "$USR" ]]; then
-    echo "[$(date --iso=s)] User \"$OLD\" already exists at UID=100. I won't touch a thing..."
+    echo "[$(date --iso=s)] User [$OLD] already exists at UID=100. I won't touch a thing..."
     :
 else
     if [[ -n "$OLD" ]] ; then
-        echo "[$(date --iso=s)] Replacing user \"$OLD\" with \"$USR\" at UID=1000..."
-        usermod "$OLD" --login "$USR" --move-home --home /home/"$USR"
+        echo "[$(date --iso=s)] Replacing user [$OLD] with [$USR] at UID=1000..."
+        usermod "$OLD" --login "$USR" --move-home --home "/home/$USR"
         groupmod "$OLD" --new-name "$USR"
     else
         echo "[$(date --iso=s)] Adding new user $USR at UID=1000..."
@@ -25,12 +25,12 @@ else
     # Following is how to generate the salted password hash
     # openssl passwd -6 | sed -e 's/\$/\\\$/g'
     # Paste the salted & hashed password inside the double quotes after escaping dollar sign
-    usermod "$USR" -p "\$6\$mad2s9aBKOTmVOeN\$mhoRdRxcr5cFH7V5.BStkXkoOi5oEBSMahPoQxxm4.1z8TARnqlZbTJ9BwNTyY8OCSXoW8hRAw5qZznQVBapE0"
+    usermod "$USR" -p "\$6\$9Gf99SNxWqScte6A\$GAp2wKrSLmM4y2ImJ338NZ.zu1H5ogVl.nEiTW1e/wNcZ2cy5FoOKCWLMKPSrJqavW3Kdy0zzWfNlQ4UdgBz5."
     # Add SSH keys securely
-    authfile=/home/"$USR"/.ssh/authorized_keys
+    authfile="/home/$USR/.ssh/authorized_keys"
     if [[ ! -f "$authfile" ]]; then
         directory="$(dirname "$authfile")"
-        su aamir -c "mkdir -p \"$directory\""
+        su aamir -c "mkdir -p '$directory'"
         chmod 0700 "$directory"
         install -m 0600 -o "$USR" -g "$USR" /dev/null "$authfile"
     fi
@@ -50,5 +50,5 @@ echo "[$(date --iso=s)] Updating OS finished!"
 
 ) | tee "$logfile"
 
-install -o "$USR" -g "$USR" "$logfile" "/home/\"$USR\""
+install -o "$USR" -g "$USR" "$logfile" "/home/$USR"
 popd || exit
