@@ -88,48 +88,49 @@ After this operation, 2585 MB of additional disk space will be used.
 
 
 
-   ┌───────────────────────────────────┤ Software selection ├────────────────────────────────────┐
-   │ You can choose to install one or more of the following predefined collections of software.  │
-   │                                                                                             │
-   │ Choose software to install:                                                                 │
-   │                                                                                             │
-   │    [ ] Kubuntu live CD                                                                      │
-   │    [ ] Lubuntu live CD                                                                      │
-   │    [ ] Ubuntu Budgie live CD                                                                │
-   │    [ ] Ubuntu live CD                                                                       │
-   │    [ ] Ubuntu MATE Live CD                                                                  │
-   │    [ ] Ubuntu Studio live DVD                                                               │
-   │    [ ] Xubuntu live CD                                                                      │
-   │    [*] Ubuntu Cloud Image (instance)                                                        │
-   │    [ ] DNS server                                                                           │
-   │    [ ] Kubuntu desktop                                                                      │
-   │    [ ] LAMP server                                                                          │
-   │    [ ] Lubuntu Desktop                                                                      │
-   │    [ ] Mail server                                                                          │
-   │    [ ] PostgreSQL database                                                                  │
-   │    [ ] Print server                                                                         │
-   │    [ ] Samba file server                                                                    │
-   │    [ ] Ubuntu Budgie desktop                                                                │
-   │    [ ] Ubuntu desktop                                                                       │
-   │    [ ] Ubuntu desktop default languages                                                     │
-   │    [ ] Ubuntu minimal desktop                                                               │
-   │    [ ] Ubuntu minimal desktop default languages                                             │
-   │    [ ] Ubuntu MATE minimal                                                                  │
-   │    [ ] Ubuntu MATE desktop                                                                  │
-   │    [ ] Audio recording and editing suite                                                    │
-   │    [ ] Ubuntu Studio desktop                                                                │
-   │    [ ] Ubuntu Studio minimal DE installation                                                │
-   │    [ ] Large selection of font packages                                                     │
-   │    [ ] 2D/3D creation and editing suite                                                     │
-   │    [ ] Photograph touchup and editing suite                                                 │
-   │    [ ] Publishing applications                                                              │
-   │    [ ] Video creation and editing suite                                                     │
-   │    [ ] Xubuntu minimal installation                                                         │
-   │    [ ] Xubuntu desktop                                                                      │
-   │    [*] OpenSSH server                                                                       │
-   │    [*] Basic Ubuntu server                                                                  │
-   │                                                                                             │
-   │                                                                                             │
-   │                                           <Ok>                                              │
-   │                                                                                             │
-   └─────────────────────────────────────────────────────────────────────────────────────────────┘
+# ┌───────────────────────────────────┤ Software selection ├──────────────────────-─┐
+# │ You can choose to install one or more of the following predefined collections   │
+# │ of software.                                                                    │
+# │                                                                                 │
+# │ Choose software to install:                                                     │
+# │                                                                                 │
+# │    [ ] Kubuntu live CD                                                          │
+# │    [ ] Lubuntu live CD                                                          │
+# │    [ ] Ubuntu Budgie live CD                                                    │
+# │    [ ] Ubuntu live CD                                                           │
+# │    [ ] Ubuntu MATE Live CD                                                      │
+# │    [ ] Ubuntu Studio live DVD                                                   │
+# │    [ ] Xubuntu live CD                                                          │
+# │    [*] Ubuntu Cloud Image (instance)                                            │
+# │    [ ] DNS server                                                               │
+# │    [ ] Kubuntu desktop                                                          │
+# │    [ ] LAMP server                                                              │
+# │    [ ] Lubuntu Desktop                                                          │
+# │    [ ] Mail server                                                              │
+# │    [ ] PostgreSQL database                                                      │
+# │    [ ] Print server                                                             │
+# │    [ ] Samba file server                                                        │
+# │    [ ] Ubuntu Budgie desktop                                                    │
+# │    [ ] Ubuntu desktop                                                           │
+# │    [ ] Ubuntu desktop default languages                                         │
+# │    [ ] Ubuntu minimal desktop                                                   │
+# │    [ ] Ubuntu minimal desktop default languages                                 │
+# │    [ ] Ubuntu MATE minimal                                                      │
+# │    [ ] Ubuntu MATE desktop                                                      │
+# │    [ ] Audio recording and editing suite                                        │
+# │    [ ] Ubuntu Studio desktop                                                    │
+# │    [ ] Ubuntu Studio minimal DE installation                                    │
+# │    [ ] Large selection of font packages                                         │
+# │    [ ] 2D/3D creation and editing suite                                         │
+# │    [ ] Photograph touchup and editing suite                                     │
+# │    [ ] Publishing applications                                                  │
+# │    [ ] Video creation and editing suite                                         │
+# │    [ ] Xubuntu minimal installation                                             │
+# │    [ ] Xubuntu desktop                                                          │
+# │    [*] OpenSSH server                                                           │
+# │    [*] Basic Ubuntu server                                                      │
+# │                                                                                 │
+# │                                                                                 │
+# │                                           <Ok>                                  │
+# │                                                                                 │
+# └──────────────────────────────────────────────────────────────────────── ────────┘
