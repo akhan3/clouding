@@ -1,5 +1,6 @@
 #!/bin/sh
 
+APT_UPDATE="yes" # Packages will only be installed if APT_UPDATE is defined as "yes"
 USR="aamir"
 logfile="/first_launch_$(date +%s).log"
 
@@ -39,6 +40,7 @@ else
     " | awk '{$1=$1; print}' | grep . >> "$authfile"
 fi
 
+if [ "$APT_UPDATE" = "yes" ] ; then
 echo "[$(date --iso=s)] Updating OS..."
 apt-get update -yq
 apt-get install -yq sudo git tmux
@@ -46,6 +48,9 @@ apt-get install molly-guard tmux git xsel colordiff moreutils curl -yq
 apt-get install bat tree ncdu tasksel wajig -yq
 apt-get dist-upgrade -yq
 echo "[$(date --iso=s)] Updating OS finished!"
+else
+    echo "[$(date --iso=s)] OS update was not requested!"
+fi
 
 ) | tee "$logfile"
 
