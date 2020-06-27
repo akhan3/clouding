@@ -50,5 +50,7 @@ echo "[$(date --iso=s)] Updating OS finished!"
 
 ) | tee "$logfile"
 
-install -o "$USR" -g "$USR" "$logfile" "/home/$USR"
+install -m 644 -o "$USR" -g "$USR" "$logfile" "/home/$USR"
 popd || exit
+
+# Commit hash: [write here for traceability]
