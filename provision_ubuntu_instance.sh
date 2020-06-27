@@ -1,19 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
 USR="aamir"
 logfile="/first_launch_$(date +%s).log"
-pushd /root || exit
 
 (
 echo "[$(date --iso=s)] First launch detected"
 
 # Check the user at UID=1000
 OLD="$(id -n -u 1000 2> /dev/null)"
-if [[ "$OLD" == "$USR" ]]; then
+if [ "$OLD" = "$USR" ]; then
     echo "[$(date --iso=s)] User [$OLD] already exists at UID=100. I won't touch a thing..."
     :
 else
-    if [[ -n "$OLD" ]] ; then
+    if [ -n "$OLD" ] ; then
         echo "[$(date --iso=s)] Replacing user [$OLD] with [$USR] at UID=1000..."
         usermod "$OLD" --login "$USR" --move-home --home "/home/$USR"
         groupmod "$OLD" --new-name "$USR"
@@ -28,7 +27,7 @@ else
     usermod "$USR" -p "\$6\$9Gf99SNxWqScte6A\$GAp2wKrSLmM4y2ImJ338NZ.zu1H5ogVl.nEiTW1e/wNcZ2cy5FoOKCWLMKPSrJqavW3Kdy0zzWfNlQ4UdgBz5."
     # Add SSH keys securely
     authfile="/home/$USR/.ssh/authorized_keys"
-    if [[ ! -f "$authfile" ]]; then
+    if [ ! -f "$authfile" ]; then
         directory="$(dirname "$authfile")"
         su aamir -c "mkdir -p '$directory'"
         chmod 0700 "$directory"
@@ -51,6 +50,5 @@ echo "[$(date --iso=s)] Updating OS finished!"
 ) | tee "$logfile"
 
 install -m 644 -o "$USR" -g "$USR" "$logfile" "/home/$USR"
-popd || exit
 
 # Commit hash: [write here for traceability]
