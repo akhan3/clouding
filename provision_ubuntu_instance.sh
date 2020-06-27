@@ -44,8 +44,8 @@ if [ "$APT_UPDATE" = "yes" ] ; then
     echo "[$(date --iso=s)] Updating OS..."
     apt-get update -yq
     apt-get install -yq sudo git tmux
-    apt-get install molly-guard tmux git xsel colordiff moreutils curl -yq
-    apt-get install bat tree ncdu tasksel wajig -yq
+    apt-get install -yq molly-guard tmux git xsel colordiff moreutils curl
+    apt-get install -yq bat tree ncdu tasksel wajig
     apt-get dist-upgrade -yq
     echo "[$(date --iso=s)] Updating OS finished!"
 else
