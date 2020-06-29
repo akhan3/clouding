@@ -19,8 +19,8 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu fo
 apt update -yq
 apt install -yq docker-ce
     # aufs-tools cgroupfs-mount containerd.io docker-ce docker-ce-cli libltdl7 pigz
-systemctl status docker
 adduser aamir docker
+systemctl status --no-pager -l docker
 )
 
 # Test
