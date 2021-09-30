@@ -39,8 +39,8 @@ else
         install -m 0600 -o "$USR" -g "$USR" /dev/null "$authfile"
     fi
     echo "
-    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGEHqJmGRD2IwHdNbzAcqv0dpefc/0aJIpTa8jSQMJCM aamir_thinkpad_1569257096
-    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHVlHSmjT6YmYlJ/A19vqzDgM1/TS4+6ulEoksgAIXN aamir@macbook_1553227072
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM2HQFNcrldrxQS8ExlrTfJp1vfoPkOy1fk41QfPWZWJ
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHVlHSmjT6YmYlJ/A19vqzDgM1/TS4+6ulEoksgAIXN
     " | awk '{$1=$1; print}' | grep . >> "$authfile"
 fi
 
