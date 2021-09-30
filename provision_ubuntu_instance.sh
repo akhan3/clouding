@@ -21,7 +21,11 @@ else
         echo "[$(date --iso=s)] Adding new user $USR at UID=1000..."
         useradd "$USR" --uid 1000
     fi
-    useradd "$USR" sudo
+    if [ -f "/etc/debian_version" ]; then
+        usermod -aG sudo "$USR"     # valid for Debian-based systems
+    else
+        usermod -aG wheel "$USR"    # valid for RHEL-based systems
+    fi
     # Following is how to generate the salted password hash
     # openssl passwd -6 | sed -e 's/\$/\\\$/g'
     # Paste the salted & hashed password inside the double quotes after escaping dollar sign
