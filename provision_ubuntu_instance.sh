@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APT_UPDATE="yes" # Packages will only be installed if APT_UPDATE is defined as "yes"
+APT_UPDATE="no" # Packages will only be installed if APT_UPDATE is defined as "yes"
 USR="aamir"
 logfile="/first_launch_$(date +%s).log"
 
