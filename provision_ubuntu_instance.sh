@@ -19,9 +19,9 @@ else
         groupmod "$OLD" --new-name "$USR"
     else
         echo "[$(date --iso=s)] Adding new user $USR at UID=1000..."
-        adduser "$USR" --disabled-password --gecos "" --uid 1000
+        useradd "$USR" --disabled-password --gecos "" --uid 1000
     fi
-    adduser "$USR" sudo
+    useradd "$USR" sudo
     # Following is how to generate the salted password hash
     # openssl passwd -6 | sed -e 's/\$/\\\$/g'
     # Paste the salted & hashed password inside the double quotes after escaping dollar sign
