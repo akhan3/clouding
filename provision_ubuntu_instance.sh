@@ -10,7 +10,7 @@ echo "[$(date --iso=s)] First launch detected"
 # Check the user at UID=1000
 OLD="$(id -n -u 1000 2> /dev/null)"
 if [ "$OLD" = "$USR" ]; then
-    echo "[$(date --iso=s)] User [$OLD] already exists at UID=100. I won't touch a thing..."
+    echo "[$(date --iso=s)] User [$OLD] already exists at UID=1000. I won't touch a thing..."
     :
 else
     if [ -n "$OLD" ] ; then
@@ -19,7 +19,7 @@ else
         groupmod "$OLD" --new-name "$USR"
     else
         echo "[$(date --iso=s)] Adding new user $USR at UID=1000..."
-        useradd "$USR" --uid 1000
+        useradd --create-home --shell /bin/bash --uid 1000 "$USR"
     fi
     if [ -f "/etc/debian_version" ]; then
         usermod -aG sudo "$USR"     # valid for Debian-based systems
